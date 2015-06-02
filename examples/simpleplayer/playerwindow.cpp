@@ -52,9 +52,11 @@ PlayerWindow::PlayerWindow(QWidget *parent) : QWidget(parent)
     m_openBtn = new QPushButton("Open");
     m_playBtn = new QPushButton("Play/Pause");
     m_stopBtn = new QPushButton("Stop");
+    m_imageCaptBtn = new QPushButton("Save Image");
     hb->addWidget(m_openBtn);
     hb->addWidget(m_playBtn);
     hb->addWidget(m_stopBtn);
+    hb->addWidget(m_imageCaptBtn);
     connect(m_openBtn, SIGNAL(clicked()), SLOT(openMedia()));
     connect(m_playBtn, SIGNAL(clicked()), SLOT(playPause()));
     connect(m_stopBtn, SIGNAL(clicked()), m_player, SLOT(stop()));

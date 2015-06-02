@@ -44,6 +44,7 @@ private:
     QPushButton *m_openBtn;
     QPushButton *m_playBtn;
     QPushButton *m_stopBtn;
+    QPushButton *m_imageCaptBtn;
 };
 
 #endif // PLAYERWINDOW_H
