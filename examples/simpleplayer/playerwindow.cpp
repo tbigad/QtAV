@@ -60,6 +60,8 @@ PlayerWindow::PlayerWindow(QWidget *parent) : QWidget(parent)
     connect(m_openBtn, SIGNAL(clicked()), SLOT(openMedia()));
     connect(m_playBtn, SIGNAL(clicked()), SLOT(playPause()));
     connect(m_stopBtn, SIGNAL(clicked()), m_player, SLOT(stop()));
+    connect(m_imageCaptBtn, SIGNAL(clicked(bool)), SLOT(capture()));
+    connect(m_player->videoCapture(), SIGNAL(imageCaptured(QImage)), SLOT(saveimageCapture(QImage)));
 }
 
 void PlayerWindow::openMedia()
@@ -90,4 +92,15 @@ void PlayerWindow::updateSlider()
 {
     m_slider->setRange(0, int(m_player->duration()/1000LL));
     m_slider->setValue(int(m_player->position()/1000LL));
+}
+
+void PlayerWindow::capture()
+{
+    m_player->videoCapture()->request();
+}
+
+void PlayerWindow::saveimageCapture(QImage img)
+{
+    QString file = QFileDialog::getSaveFileName();
+    img.save(file, "JPG");
 }

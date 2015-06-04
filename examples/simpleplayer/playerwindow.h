@@ -35,6 +35,8 @@ public Q_SLOTS:
     void openMedia();
     void seek(int);
     void playPause();
+    void saveimageCapture(QImage img);
+    void capture();
 private Q_SLOTS:
     void updateSlider();
 private:
